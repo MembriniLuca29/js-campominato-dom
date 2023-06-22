@@ -1,0 +1,99 @@
+
+/* RESET */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #083B4C;
+    background-image: url("https://wallpaperaccess.com/full/880901.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+h1{
+    color: white;
+    text-align: center;
+    font-size: 6rem;
+    padding: 5px 0;
+}
+
+.selection{
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem
+}
+
+select{
+    font-size: 1.5rem;
+}
+
+.selection> label{
+    font-size: 2rem;
+    padding-right: 10px;
+}
+
+.generate-button{
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    border: none;
+    font-size: 2rem;
+    padding: 5px;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: aqua;
+
+}
+
+
+
+.container{
+    display: flex;
+    width: 50%;
+    height: 600px;
+    margin: 10px auto ;
+    flex-wrap: wrap;
+}
+
+.container>div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc((100% / 10));
+    height: calc((100% / 10));
+    background-color: white;
+    border: 2px solid black;
+}
+
+.container > .celle{
+    background-color: greenyellow;
+}
+
+.container > .celle.active{
+    background-color: lightblue;
+}
+
+.container > .normal{
+    width: calc(100% / 9);
+    height: calc((100% / 9));
+}
+
+
+.container > .hard{
+    width: calc(100% / 7);
+    height: calc((100% / 7));
+
+}
