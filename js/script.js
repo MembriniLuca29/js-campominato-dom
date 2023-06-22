@@ -49,7 +49,7 @@ console.log(randomNumbers)
             
                 
                 for (var i = 0; i < randomNumbers.length; i++) {
-                    // Verifica se la variabile è uguale all'elemento corrente dell'array
+
                     if (numeroSelezionato === randomNumbers[i]) {
                       console.log("La variabile è uguale a uno dei valori dell'array.");
                       break; // Se trovi una corrispondenza, puoi uscire dal ciclo
@@ -104,7 +104,6 @@ while (randomNumbers.length < 15) {
         
             
             for (var i = 0; i < randomNumbers.length; i++) {
-                // Verifica se la variabile è uguale all'elemento corrente dell'array
                 if (numeroSelezionato === randomNumbers[i]) {
                   console.log("La variabile è uguale a uno dei valori dell'array.");
                   break; // Se trovi una corrispondenza, puoi uscire dal ciclo
@@ -160,7 +159,6 @@ console.log(randomNumbers)
         
             
             for (var i = 0; i < randomNumbers.length; i++) {
-                // Verifica se la variabile è uguale all'elemento corrente dell'array
                 if (numeroSelezionato === randomNumbers[i]) {
                   console.log("La variabile è uguale a uno dei valori dell'array.");
                   break; // Se trovi una corrispondenza, puoi uscire dal ciclo
