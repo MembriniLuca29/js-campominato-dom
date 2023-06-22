@@ -6,7 +6,7 @@ const generate = document.getElementById("generate")
 const difficult = document.getElementById("difficult")
 
 const x = 100;
-const randomNumbers = [];
+let randomNumbers = [];
 
 while (randomNumbers.length < 15) {
     const aNumber = randomNumber(1, x);
@@ -17,12 +17,14 @@ while (randomNumbers.length < 15) {
     }
 
 }
-console.log(randomNumbers);
+
+const numeriBomba = randomNumbers[0];
+console.log(randomNumbers, "a destra le bombe", numeriBomba);
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-
+console.log("prova", randomNumbers[0])
 
 generate.addEventListener("click",
 function tabella() {
@@ -36,15 +38,37 @@ if (difficult.value == "facile"){
         container.append(celle);
         celle.classList.add("celle")
 
-        
-       
-       
+
     
         celle.addEventListener('click', function () {
                 console.log(this.innerHTML);
-                celle.classList.toggle("active")
+
+            let numeroSelezionato = parseInt(this.innerHTML) 
             
-    }
+
+            
+                celle.classList.add("active");
+                
+                for (var i = 0; i < randomNumbers.length; i++) {
+                    // Verifica se la variabile è uguale all'elemento corrente dell'array
+                    if (numeroSelezionato === randomNumbers[i]) {
+                      console.log("La variabile è uguale a uno dei valori dell'array.");
+                      break; // Se trovi una corrispondenza, puoi uscire dal ciclo
+                    }
+                  }
+
+                  console.log("mio", numeroSelezionato , randomNumbers[i])
+
+            if(numeroSelezionato === randomNumbers[i]){
+                celle.classList.add("bomb");
+            }
+            else if( numeroSelezionato != randomNumbers[0]){
+
+            }
+               
+            
+            
+    },{once : true}
     )
     }
 }
@@ -94,5 +118,7 @@ else if (difficult.value == "difficile"){
  ,
 )
 
+
+// {once : true}
 
 
