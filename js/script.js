@@ -7,6 +7,8 @@ const difficult = document.getElementById("difficult")
 
 const termine = document.getElementById("termine")
 
+let clickCount = 0;
+
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
@@ -21,7 +23,7 @@ if (difficult.value == "facile"){
     
 let randomNumbers = [];
 
-while (randomNumbers.length < 15) {
+while (randomNumbers.length < 16) {
     const aNumber = randomNumber(1, 100);
     console.log(aNumber, typeof aNumber);
 
@@ -42,32 +44,46 @@ console.log(randomNumbers)
         container.append(celle);
         celle.classList.add("celle")
 
-
-    
+   
         celle.addEventListener('click', function () {
                 console.log(this.innerHTML);
 
+                if (!this.classList.contains("clicked")) {
+                    this.classList.add("clicked");
+                    clickCount++;
+                    console.log("Casella " + this.textContent + " cliccata" , clickCount);
+                return
+            }
+
+        
             let numeroSelezionato = parseInt(this.innerHTML) 
             
                 
-                for (var i = 0; i < randomNumbers.length; i++) {
+                for (let i = 0; i < randomNumbers.length; i++) {
 
                     if (numeroSelezionato === randomNumbers[i]) {
                       console.log("La variabile è uguale a uno dei valori dell'array.");
-                      break; // Se trovi una corrispondenza, puoi uscire dal ciclo
+                      break; 
                     }
                   }
 
-                  console.log("mio", numeroSelezionato , randomNumbers[i])
+                  console.log("mio", numeroSelezionato ,)
+
+                  
 
             if(numeroSelezionato === randomNumbers[i]){
                 celle.classList.add("bomb");
                 termine.style.display = "flex";
             }
+            else if (clickCount == 84) {
+                termine.style.display = "flex";
+            }
             else if( numeroSelezionato != randomNumbers[i]) {
                 celle.classList.add("active");
             }
-               
+           
+
+            
             
             
     },{once : true}
@@ -79,7 +95,7 @@ else if (difficult.value == "normale"){
 
     let randomNumbers = [];
 
-while (randomNumbers.length < 15) {
+while (randomNumbers.length < 16) {
     const aNumber = randomNumber(1, 81);
     console.log(aNumber, typeof aNumber);
 
@@ -100,16 +116,25 @@ while (randomNumbers.length < 15) {
         celle.classList.add("celle")
         celle.classList.add("normal")
      
+        
         celle.addEventListener('click', function () {
             console.log(this.innerHTML);
 
+            if (!this.classList.contains("clicked")) {
+                this.classList.add("clicked");
+                clickCount++;
+                console.log("Casella " + this.textContent + " cliccata" , clickCount);
+        }
+
+          
         let numeroSelezionato = parseInt(this.innerHTML) 
         
+
             
             for (var i = 0; i < randomNumbers.length; i++) {
                 if (numeroSelezionato === randomNumbers[i]) {
                   console.log("La variabile è uguale a uno dei valori dell'array.");
-                  break; // Se trovi una corrispondenza, puoi uscire dal ciclo
+                  break; 
                 }
               }
 
@@ -117,7 +142,11 @@ while (randomNumbers.length < 15) {
 
         if(numeroSelezionato === randomNumbers[i]){
             celle.classList.add("bomb");
+            termine.style.display = "flex";
 
+        }
+        else if (clickCount == 65) {
+            termine.style.display = "flex";
         }
         else if( numeroSelezionato != randomNumbers[i]) {
             celle.classList.add("active");
@@ -131,9 +160,11 @@ while (randomNumbers.length < 15) {
 }
 else if (difficult.value == "difficile"){
 
+   
+console.log("Casella " + this.textContent + " cliccata" , clickCount);
     let randomNumbers = [];
 
-while (randomNumbers.length < 15) {
+while (randomNumbers.length < 1) {
     const aNumber = randomNumber(1, 49);
     console.log(aNumber, typeof aNumber);
 
@@ -159,24 +190,39 @@ console.log(randomNumbers)
         celle.addEventListener('click', function () {
             console.log(this.innerHTML);
 
+            if (!this.classList.contains("clicked")) {
+                this.classList.add("clicked");
+                clickCount++;
+                console.log("Casella " + this.textContent + " cliccata" , clickCount);
+        }
+
         let numeroSelezionato = parseInt(this.innerHTML) 
         
             
             for (var i = 0; i < randomNumbers.length; i++) {
                 if (numeroSelezionato === randomNumbers[i]) {
                   console.log("La variabile è uguale a uno dei valori dell'array.");
-                  break; // Se trovi una corrispondenza, puoi uscire dal ciclo
+                  break; 
                 }
               }
 
               console.log("mio", numeroSelezionato , randomNumbers[i])
+              console.log(clickCount,"allll")
 
         if(numeroSelezionato === randomNumbers[i]){
             celle.classList.add("bomb");
+            termine.style.display = "flex";
         }
+        else if (clickCount == 33) {
+            termine.style.display = "flex";
+        }
+
         else if( numeroSelezionato != randomNumbers[i]) {
             celle.classList.add("active");
         }
+      
+        
+
            
         
         
