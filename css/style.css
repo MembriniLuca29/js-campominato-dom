@@ -97,3 +97,7 @@ button:hover{
     height: calc((100% / 7));
 
 }
+
+.container > .celle.bomb{
+    background-color: red;
+}

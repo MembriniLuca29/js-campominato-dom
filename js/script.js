@@ -5,30 +5,32 @@ const generate = document.getElementById("generate")
 
 const difficult = document.getElementById("difficult")
 
-const x = 100;
+
+
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+
+generate.addEventListener("click",
+function tabella() {
+if (difficult.value == "facile"){
+
+    
 let randomNumbers = [];
 
 while (randomNumbers.length < 15) {
-    const aNumber = randomNumber(1, x);
+    const aNumber = randomNumber(1, 100);
     console.log(aNumber, typeof aNumber);
 
     if (!randomNumbers.includes(aNumber)) {
         randomNumbers.push(aNumber);
     }
 
+    
 }
 
-const numeriBomba = randomNumbers[0];
-console.log(randomNumbers, "a destra le bombe", numeriBomba);
-function randomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) ) + min;
-}
-
-console.log("prova", randomNumbers[0])
-
-generate.addEventListener("click",
-function tabella() {
-if (difficult.value == "facile"){
+console.log(randomNumbers)
     const gamecontainer = document.getElementById("container");
     gamecontainer.innerHTML = "";
     for (let numero = 1; numero <= 100; numero++) {
@@ -45,9 +47,6 @@ if (difficult.value == "facile"){
 
             let numeroSelezionato = parseInt(this.innerHTML) 
             
-
-            
-                celle.classList.add("active");
                 
                 for (var i = 0; i < randomNumbers.length; i++) {
                     // Verifica se la variabile è uguale all'elemento corrente dell'array
@@ -62,8 +61,8 @@ if (difficult.value == "facile"){
             if(numeroSelezionato === randomNumbers[i]){
                 celle.classList.add("bomb");
             }
-            else if( numeroSelezionato != randomNumbers[0]){
-
+            else if( numeroSelezionato != randomNumbers[i]) {
+                celle.classList.add("active");
             }
                
             
@@ -74,6 +73,20 @@ if (difficult.value == "facile"){
 }
 
 else if (difficult.value == "normale"){
+
+    let randomNumbers = [];
+
+while (randomNumbers.length < 15) {
+    const aNumber = randomNumber(1, 81);
+    console.log(aNumber, typeof aNumber);
+
+    if (!randomNumbers.includes(aNumber)) {
+        randomNumbers.push(aNumber);
+    }
+
+    
+}
+    console.log(randomNumbers)
     const gamecontainer = document.getElementById("container");
     gamecontainer.innerHTML = "";
     for (let numero = 1; numero <= 81; numero++) {
@@ -83,18 +96,51 @@ else if (difficult.value == "normale"){
         container.append(celle);
         celle.classList.add("celle")
         celle.classList.add("normal")
-       
-    
+     
         celle.addEventListener('click', function () {
-                console.log(this.innerHTML);
-                celle.classList.add("active")
+            console.log(this.innerHTML);
+
+        let numeroSelezionato = parseInt(this.innerHTML) 
+        
             
-                
-    }
+            for (var i = 0; i < randomNumbers.length; i++) {
+                // Verifica se la variabile è uguale all'elemento corrente dell'array
+                if (numeroSelezionato === randomNumbers[i]) {
+                  console.log("La variabile è uguale a uno dei valori dell'array.");
+                  break; // Se trovi una corrispondenza, puoi uscire dal ciclo
+                }
+              }
+
+              console.log("mio", numeroSelezionato , randomNumbers[i])
+
+        if(numeroSelezionato === randomNumbers[i]){
+            celle.classList.add("bomb");
+        }
+        else if( numeroSelezionato != randomNumbers[i]) {
+            celle.classList.add("active");
+        }
+           
+        
+        
+},{once : true}
     )
     }
 }
 else if (difficult.value == "difficile"){
+
+    let randomNumbers = [];
+
+while (randomNumbers.length < 15) {
+    const aNumber = randomNumber(1, 49);
+    console.log(aNumber, typeof aNumber);
+
+    if (!randomNumbers.includes(aNumber)) {
+        randomNumbers.push(aNumber);
+    }
+
+    
+}
+console.log(randomNumbers)
     const gamecontainer = document.getElementById("container");
     gamecontainer.innerHTML = "";
     for (let numero = 1; numero <= 49; numero++) {
@@ -106,11 +152,33 @@ else if (difficult.value == "difficile"){
         celle.classList.add("hard")
        
     
+     
         celle.addEventListener('click', function () {
-                console.log(this.innerHTML);
-                celle.classList.toggle("active")
+            console.log(this.innerHTML);
+
+        let numeroSelezionato = parseInt(this.innerHTML) 
+        
             
-    }
+            for (var i = 0; i < randomNumbers.length; i++) {
+                // Verifica se la variabile è uguale all'elemento corrente dell'array
+                if (numeroSelezionato === randomNumbers[i]) {
+                  console.log("La variabile è uguale a uno dei valori dell'array.");
+                  break; // Se trovi una corrispondenza, puoi uscire dal ciclo
+                }
+              }
+
+              console.log("mio", numeroSelezionato , randomNumbers[i])
+
+        if(numeroSelezionato === randomNumbers[i]){
+            celle.classList.add("bomb");
+        }
+        else if( numeroSelezionato != randomNumbers[i]) {
+            celle.classList.add("active");
+        }
+           
+        
+        
+},{once : true}
     )
     }
 }   
