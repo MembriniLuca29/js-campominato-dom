@@ -7,7 +7,7 @@ const difficult = document.getElementById("difficult")
 
 const termine = document.getElementById("termine")
 
-let clickCount = 0;
+
 
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -17,11 +17,14 @@ function randomNumber(min, max) {
 generate.addEventListener("click",
 function tabella() {
 
+    let clickCount = 0;
+
     termine.style.display = "none";
+    
+    let randomNumbers = [];
+
 if (difficult.value == "facile"){
 
-    
-let randomNumbers = [];
 
 while (randomNumbers.length < 16) {
     const aNumber = randomNumber(1, 100);
@@ -46,45 +49,40 @@ console.log(randomNumbers)
 
    
         celle.addEventListener('click', function () {
-                console.log(this.innerHTML);
+            console.log(this.innerHTML);
 
-                if (!this.classList.contains("clicked")) {
-                    this.classList.add("clicked");
-                    clickCount++;
-                    console.log("Casella " + this.textContent + " cliccata" , clickCount);
-                return
-            }
+            if (!this.classList.contains("clicked")) {
+                this.classList.add("clicked");
+                clickCount++;
+                console.log("Casella " + this.textContent + " cliccata" , clickCount);
+        };
 
+          
+        let numeroSelezionato = parseInt(this.innerHTML) ;
         
-            let numeroSelezionato = parseInt(this.innerHTML) 
-            
-                
-                for (let i = 0; i < randomNumbers.length; i++) {
-
-                    if (numeroSelezionato === randomNumbers[i]) {
-                      console.log("La variabile è uguale a uno dei valori dell'array.");
-                      break; 
-                    }
-                  }
-
-                  console.log("mio", numeroSelezionato ,)
-
-                  
-
-            if(numeroSelezionato === randomNumbers[i]){
-                celle.classList.add("bomb");
-                termine.style.display = "flex";
-            }
-            else if (clickCount == 84) {
-                termine.style.display = "flex";
-            }
-            else if( numeroSelezionato != randomNumbers[i]) {
-                celle.classList.add("active");
-            }
-           
 
             
-            
+            for (var i = 0; i < randomNumbers.length; i++) {
+                if (numeroSelezionato === randomNumbers[i]) {
+                  console.log("La variabile è uguale a uno dei valori dell'array.");
+                  break; 
+                }
+              }
+
+              console.log("mio", numeroSelezionato , randomNumbers[i])
+
+        if(numeroSelezionato === randomNumbers[i]){
+            celle.classList.add("bomb");
+            termine.style.display = "flex";
+            document.getElementById("punteggio").innerHTML = "hai cliccato correttamente: " + (clickCount - 1) + " celle"
+        }
+        else if (clickCount == 84) {
+            termine.style.display = "flex";
+            document.getElementById("punteggio").innerHTML = "hai vinto";
+        }
+        else if( numeroSelezionato != randomNumbers[i]) {
+            celle.classList.add("active");
+        }
             
     },{once : true}
     )
@@ -92,8 +90,6 @@ console.log(randomNumbers)
 }
 
 else if (difficult.value == "normale"){
-
-    let randomNumbers = [];
 
 while (randomNumbers.length < 16) {
     const aNumber = randomNumber(1, 81);
@@ -143,10 +139,12 @@ while (randomNumbers.length < 16) {
         if(numeroSelezionato === randomNumbers[i]){
             celle.classList.add("bomb");
             termine.style.display = "flex";
+            document.getElementById("punteggio").innerHTML = "hai cliccato correttamente: " + (clickCount - 1) + " celle";
 
         }
         else if (clickCount == 65) {
             termine.style.display = "flex";
+            document.getElementById("punteggio").innerHTML = "hai vinto";
         }
         else if( numeroSelezionato != randomNumbers[i]) {
             celle.classList.add("active");
@@ -160,11 +158,9 @@ while (randomNumbers.length < 16) {
 }
 else if (difficult.value == "difficile"){
 
-   
 console.log("Casella " + this.textContent + " cliccata" , clickCount);
-    let randomNumbers = [];
 
-while (randomNumbers.length < 1) {
+while (randomNumbers.length < 16) {
     const aNumber = randomNumber(1, 49);
     console.log(aNumber, typeof aNumber);
 
@@ -212,9 +208,11 @@ console.log(randomNumbers)
         if(numeroSelezionato === randomNumbers[i]){
             celle.classList.add("bomb");
             termine.style.display = "flex";
+            document.getElementById("punteggio").innerHTML = "hai cliccato correttamente: " + (clickCount - 1) + " celle";
         }
         else if (clickCount == 33) {
             termine.style.display = "flex";
+            document.getElementById("punteggio").innerHTML = "hai vinto";
         }
 
         else if( numeroSelezionato != randomNumbers[i]) {
