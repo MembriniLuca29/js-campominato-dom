@@ -101,3 +101,23 @@ button:hover{
 .container > .celle.bomb{
     background-color: red;
 }
+
+.terminate{
+    position: absolute;
+    width: 80vw;
+    height: 70vh;
+    background-color: transparent;
+    top: 26%;
+    left: 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.result{
+    background-color: white;
+    height: 50%;
+    width: 40%;
+    opacity: 1;
+}

@@ -5,7 +5,7 @@ const generate = document.getElementById("generate")
 
 const difficult = document.getElementById("difficult")
 
-
+const termine = document.getElementById("termine")
 
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -14,6 +14,8 @@ function randomNumber(min, max) {
 
 generate.addEventListener("click",
 function tabella() {
+
+    termine.style.display = "none";
 if (difficult.value == "facile"){
 
     
@@ -60,6 +62,7 @@ console.log(randomNumbers)
 
             if(numeroSelezionato === randomNumbers[i]){
                 celle.classList.add("bomb");
+                termine.style.display = "flex";
             }
             else if( numeroSelezionato != randomNumbers[i]) {
                 celle.classList.add("active");
@@ -114,6 +117,7 @@ while (randomNumbers.length < 15) {
 
         if(numeroSelezionato === randomNumbers[i]){
             celle.classList.add("bomb");
+
         }
         else if( numeroSelezionato != randomNumbers[i]) {
             celle.classList.add("active");
